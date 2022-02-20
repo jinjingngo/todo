@@ -23,6 +23,23 @@ const config: Configuration = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.p?css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+          },
+        ],
+      },
     ],
   },
   resolve: {
