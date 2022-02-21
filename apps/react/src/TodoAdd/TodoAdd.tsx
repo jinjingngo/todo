@@ -1,5 +1,5 @@
 import {v4 as uuidv4} from 'uuid';
-import React, {useState, ChangeEvent, KeyboardEvent, MouseEvent} from 'react';
+import React, {useState, ChangeEvent, KeyboardEvent} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -11,16 +11,16 @@ export interface TodoAddProps {
 
 const TodoAdd = (props: TodoAddProps): JSX.Element => {
   const {onAdd} = props;
-  const [value, setValue] = useState('');
+  const [title, setTitle] = useState('');
 
-  const generateTask = () => {
-    return {id: uuidv4(), title: value, completed: false};
+  const generateTask = (): Task => {
+    return {id: uuidv4(), title, completed: false};
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const {value = ''} = event.target;
 
-    setValue(value);
+    setTitle(value);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>): void => {
@@ -28,13 +28,15 @@ const TodoAdd = (props: TodoAddProps): JSX.Element => {
 
     if (key !== 'Enter') return;
 
-    onAdd?.(generateTask());
-    onAdd && setValue('');
+    if (!onAdd) return;
+    onAdd(generateTask());
+    setTitle('');
   };
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
-    onAdd?.(generateTask());
-    onAdd && setValue('');
+  const handleClick = (): void => {
+    if (!onAdd) return;
+    onAdd(generateTask());
+    setTitle('');
   };
 
   return (
@@ -43,7 +45,7 @@ const TodoAdd = (props: TodoAddProps): JSX.Element => {
         label="Input todo item"
         variant="standard"
         sx={{width: '85%'}}
-        value={value}
+        value={title}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />

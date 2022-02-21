@@ -8,11 +8,7 @@ export interface Task {
 }
 
 const Todo = (): JSX.Element => {
-  return (
-    <>
-      <TodoAdd></TodoAdd>
-    </>
-  );
+  return <TodoAdd />;
 };
 
 export default Todo;
