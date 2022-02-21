@@ -14,14 +14,16 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'react-hooks'],
   rules: {
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error'],
-    'react/jsx-filename-extension': [
-      'warn',
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
       {
-        extensions: ['.tsx'],
+        allowExpressions: true,
       },
     ],
+    '@typescript-eslint/no-use-before-define': ['error'],
+    '@typescript-eslint/no-shadow': ['error'],
+    'arrow-body-style': 'off',
+    'comma-dangle': ['off', {functions: 'never'}],
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -30,28 +32,29 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': ['error'],
-    '@typescript-eslint/explicit-function-return-type': [
-      'error',
-      {
-        allowExpressions: true,
-      },
-    ],
+    'import/no-extraneous-dependencies': 'off',
+    'import/prefer-default-export': 'off',
     'max-len': [
       'warn',
       {
         code: 100,
       },
     ],
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'import/prefer-default-export': 'off',
-    'react/prop-types': 'off',
+    'no-use-before-define': 'off',
+    'no-shadow': 'off',
+    'no-restricted-exports': 'off',
     'object-curly-spacing': 'off',
-    'arrow-body-style': 'off',
+    'react/jsx-filename-extension': [
+      'warn',
+      {
+        extensions: ['.tsx'],
+      },
+    ],
     'react/function-component-definition': ['error', {namedComponents: 'arrow-function'}],
     'react/jsx-fragments': ['error', 'element'],
+    'react/prop-types': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   settings: {
     'import/resolver': {

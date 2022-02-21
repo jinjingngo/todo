@@ -10,12 +10,12 @@ export interface TodoItemProps {
   onChange: (task: Task) => void;
 }
 
-const TodoItem = (props: TodoItemProps) => {
+const TodoItem = (props: TodoItemProps): JSX.Element => {
   const {task, onChange} = props;
   const {id, title, completed} = task;
   const [isCompoleted, setIsCompoleted] = useState(completed);
 
-  const handleChange = () => {
+  const handleChange = (): void => {
     onChange({...task, completed: !isCompoleted});
     setIsCompoleted(!isCompoleted);
   };

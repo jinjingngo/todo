@@ -10,7 +10,6 @@ interface Configuration extends WebpackConfiguration {
 const config: Configuration = {
   entry: './src/entry.tsx',
   devtool: 'inline-source-map',
-  watch: true,
   devServer: {
     compress: true,
     host: '0.0.0.0',
