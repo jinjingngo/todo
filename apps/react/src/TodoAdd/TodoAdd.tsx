@@ -1,3 +1,4 @@
+import {v4 as uuidv4} from 'uuid';
 import React, {useState, ChangeEvent, KeyboardEvent, MouseEvent} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -12,6 +13,10 @@ const TodoAdd = (props: TodoAddProps): JSX.Element => {
   const {onAdd} = props;
   const [value, setValue] = useState('');
 
+  const generateTask = () => {
+    return {id: uuidv4(), title: value, completed: false};
+  };
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const {value = ''} = event.target;
 
@@ -23,12 +28,12 @@ const TodoAdd = (props: TodoAddProps): JSX.Element => {
 
     if (key !== 'Enter') return;
 
-    onAdd?.({title: value, completed: false});
+    onAdd?.(generateTask());
     onAdd && setValue('');
   };
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
-    onAdd?.({title: value, completed: false});
+    onAdd?.(generateTask());
     onAdd && setValue('');
   };
 

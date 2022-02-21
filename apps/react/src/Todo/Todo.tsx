@@ -2,7 +2,7 @@ import React from 'react';
 import TodoAdd from '../TodoAdd';
 
 export interface Task {
-  id?: number;
+  id: string;
   title: string;
   completed: boolean;
 }
