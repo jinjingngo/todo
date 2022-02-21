@@ -2,9 +2,10 @@ import React, {useState, ChangeEvent, KeyboardEvent, MouseEvent} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import {Task} from '../Todo';
 
 export interface TodoAddProps {
-  onAdd?: (text: string) => void;
+  onAdd?: (task: Task) => void;
 }
 
 const TodoAdd = (props: TodoAddProps): JSX.Element => {
@@ -22,12 +23,12 @@ const TodoAdd = (props: TodoAddProps): JSX.Element => {
 
     if (key !== 'Enter') return;
 
-    onAdd?.(value);
+    onAdd?.({title: value, completed: false});
     onAdd && setValue('');
   };
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
-    onAdd?.(value);
+    onAdd?.({title: value, completed: false});
     onAdd && setValue('');
   };
 
