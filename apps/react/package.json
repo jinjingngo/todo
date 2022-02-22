@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "NODE_ENV=development TS_NODE_PROJECT=tsconfig.json webpack-dev-server --config config/webpack.config.ts --hot --progress --open"
   },
   "repository": {
