@@ -10,7 +10,6 @@ interface Configuration extends WebpackConfiguration {
 const config: Configuration = {
   entry: './src/entry.tsx',
   devtool: 'inline-source-map',
-  watch: true,
   devServer: {
     compress: true,
     host: '0.0.0.0',
@@ -37,6 +36,11 @@ const config: Configuration = {
           },
           {
             loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                config: path.resolve(__dirname, '../postcss.config.js'),
+              },
+            },
           },
         ],
       },
