@@ -15,14 +15,14 @@ const TodoItem = (props: TodoItemProps): JSX.Element => {
   const {id, title, completed} = task;
   const [isCompoleted, setIsCompoleted] = useState(completed);
 
-  const handleChange = (): void => {
+  const handleClick = (): void => {
     onChange({...task, completed: !isCompoleted});
     setIsCompoleted(!isCompoleted);
   };
 
   return (
     <ListItem>
-      <Radio checked={isCompoleted} onChange={handleChange} />
+      <Radio checked={isCompoleted} onClick={handleClick} />
       <ListItemText id={id} primary={`${title}`} />
     </ListItem>
   );

@@ -1,5 +1,8 @@
 import React from 'react';
+import List from '@mui/material/List';
+
 import TodoAdd from '../TodoAdd';
+import TodoItem from '../TodoItem';
 
 export interface Task {
   id: string;
@@ -8,7 +11,25 @@ export interface Task {
 }
 
 const Todo = (): JSX.Element => {
-  return <TodoAdd />;
+  const [tasks, setTasks] = React.useState<Task[]>([]);
+  const onAdd = (task: Task): void => {
+    setTasks([...tasks, task]);
+  };
+
+  const onChange = (task: Task): void => {
+    setTasks(tasks.map((t) => (t.id === task.id ? task : t)));
+  };
+
+  return (
+    <React.Fragment>
+      <TodoAdd onAdd={onAdd} />
+      <List>
+        {tasks.map((task) => (
+          <TodoItem key={task.id} task={task} onChange={onChange} />
+        ))}
+      </List>
+    </React.Fragment>
+  );
 };
 
 export default Todo;

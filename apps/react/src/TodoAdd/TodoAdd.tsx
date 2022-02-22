@@ -1,8 +1,10 @@
-import {v4 as uuidv4} from 'uuid';
-import React, {useState, ChangeEvent, KeyboardEvent} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import isEmpty from 'lodash/isEmpty';
+
+import {v4 as uuidv4} from 'uuid';
+import React, {useState, ChangeEvent, KeyboardEvent} from 'react';
 import {Task} from '../Todo';
 
 export interface TodoAddProps {
@@ -26,7 +28,7 @@ const TodoAdd = (props: TodoAddProps): JSX.Element => {
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>): void => {
     const {key} = event;
 
-    if (key !== 'Enter') return;
+    if (key !== 'Enter' || isEmpty(title)) return;
 
     if (!onAdd) return;
     onAdd(generateTask());
@@ -34,7 +36,7 @@ const TodoAdd = (props: TodoAddProps): JSX.Element => {
   };
 
   const handleClick = (): void => {
-    if (!onAdd) return;
+    if (!onAdd || isEmpty(title)) return;
     onAdd(generateTask());
     setTitle('');
   };
