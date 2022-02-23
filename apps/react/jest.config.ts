@@ -3,6 +3,13 @@ module.exports = {
   // `<rootDir>` is a token Jest substitutes
   roots: ['<rootDir>/src'],
 
+  // Test spec file resolution pattern
+  // Matches folder `src` which contain `test`.
+  testMatch: ['**/src/**/*.test.tsx'],
+
+  // Module file extensions for importing
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+
   testEnvironment: 'jsdom',
 
   // Jest transformations -- this adds support for TypeScript
@@ -19,10 +26,5 @@ module.exports = {
     '@testing-library/jest-dom/extend-expect',
   ],
 
-  // Test spec file resolution pattern
-  // Matches folder `src` which contain `test`.
-  testMatch: ['**/src/**/*.test.tsx'],
-
-  // Module file extensions for importing
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  logHeapUsage: true,
 };
