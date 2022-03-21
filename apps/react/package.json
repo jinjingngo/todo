@@ -53,6 +53,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@charleserious/todos": "0.0.2",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.4.2",

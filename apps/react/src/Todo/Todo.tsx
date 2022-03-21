@@ -1,8 +1,8 @@
 import React from 'react';
 import List from '@mui/material/List';
 
-import TodoAdd from '../TodoAdd';
-import TodoItem from '../TodoItem';
+import TodoAdd from '@charleserious/todos/lib/src/components/TodoAdd';
+import TodoItem from '@charleserious/todos/lib/src/components/TodoItem';
 
 export interface Task {
   id: string;
