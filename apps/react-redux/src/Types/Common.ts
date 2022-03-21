@@ -1,8 +1,4 @@
-export interface Task {
-  id: string;
-  title: string;
-  completed: boolean;
-}
+import type {Task} from '@charleserious/todos/lib/Types';
 
 export interface State {
   tasks: Task[];

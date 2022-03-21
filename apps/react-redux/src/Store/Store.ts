@@ -1,5 +1,5 @@
 import {createStore} from 'redux';
-import type {Task, State, Action} from '../Types';
+import type {State, Action} from '../Types';
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
